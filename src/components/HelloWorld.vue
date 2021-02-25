@@ -13,6 +13,7 @@
       <template slot-scope="data" slot="Content">
         <div>很高兴见到你</div>
         <div @click="data.click">{{data.message}}</div>
+        <div v-html="msg2"></div>
       </template>
     </Child>
   </div>
@@ -30,7 +31,8 @@ export default {
       list: [
         {name: 'glh', age: 23},
         {name: 'sss', age: 24}
-      ]
+      ],
+      msg2: '不用谢'
     }
   },
   methods: {
