@@ -1,12 +1,12 @@
 import $ajax from 'axios'
 import {Message} from 'element-ui'
-const baseURL = ''
+export const baseURL = 'http://192.168.43.5:8080'
 const axios = $ajax.create({
   baseURL,
   timeout: 1000
 })
 axios.interceptors.request.use((request) => {
-  request.headers.token = localStorage.getItem('token') || ''
+  request.headers.token = localStorage.getItem('token') || '1'
   return request
 }, (error) => {
   return Promise.reject(error)
@@ -16,19 +16,19 @@ axios.interceptors.response.use((response) => {
   if (!data) {
     return
   }
-  if (data.success) {
-    return data.result
+  if (data.status === 'success') {
+    return data.data
   }
-  if (data.errorCode === 'token错误或失效') {
+  if (data.status === 'token错误或失效') {
     // token失效 返回登陆页
     Message.error(data.errorContent)
     setTimeout(() => {
-      window.location.href = `/login#${window.location.pathname + window.location.search}`
+      // window.location.hash = `#/login#${window.location.pathname + window.location.search}`
     }, 400)
   }
-  if (data.errorCode) {
+  if (data.status === 'fail') {
     // 错误提示
-    Message.warsning(data.errorContent)
+    Message.error(data.errorMsg)
   }
 }, (error) => {
   if (error.message !== 'axioscancel') {

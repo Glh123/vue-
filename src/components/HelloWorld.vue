@@ -50,6 +50,7 @@ export default {
     // setTimeout(() => {
     //   console.log(this)
     // }, 1000)
+    console.log(this.$route.path)
     this.$nextTick(function () {
       console.log(this.$refs.welcome.innerHTML)
     })
