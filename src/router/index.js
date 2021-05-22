@@ -10,6 +10,9 @@ import Developer from '../view/personal/developer.vue'
 import MyDomain from '../view/myDomain/myDomain.vue'
 import DomainMessage from '../view/myDomain/domainMessage.vue'
 import EditDomain from '../view/myDomain/editDomain.vue'
+import MyOrder from '../view/order/myOrder.vue'
+import OrderDetail from '../view/order/OrderDetail.vue'
+import Upload from '../view/domain/upload.vue'
 
 Vue.use(Router)
 // 解决ElementUI导航栏中的vue-router在3.0版本以上重复点导航，路由重复的问题
@@ -24,6 +27,11 @@ export default new Router({
       path: '/HelloWorld',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: Upload
     },
     {
       path: '/',
@@ -74,6 +82,14 @@ export default new Router({
         {
           path: 'editDomain',
           component: EditDomain
+        },
+        {
+          path: 'myOrder',
+          component: MyOrder
+        },
+        {
+          path: 'orderDetail',
+          component: OrderDetail
         }
       ]
     }

@@ -6,7 +6,7 @@ const axios = $ajax.create({
   timeout: 1000
 })
 axios.interceptors.request.use((request) => {
-  request.headers.token = localStorage.getItem('token') || '1'
+  request.headers.token = localStorage.getItem('token')
   return request
 }, (error) => {
   return Promise.reject(error)
